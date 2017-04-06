@@ -14,11 +14,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class InterfaceWebhistorie extends javax.swing.JFrame {
 
+    Database database;
+    
+    
+    String orderBy = "ORDER BY klant_id ASC";
     /**
      * Creates new form InterfaceWebhistorie
      */
-    public InterfaceWebhistorie() {
+    public InterfaceWebhistorie(Database database) {
         initComponents();
+        this.database = database;
+        setVisible(true);
+        setHistorieTabel(database.refreshFilterHistorieQuery(orderBy));
+        refreshTable();
     }
 
     /**
@@ -30,22 +38,14 @@ public class InterfaceWebhistorie extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        informatiePersoonKnop = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        persoonTabel = new javax.swing.JTable();
+        historieTabel = new javax.swing.JTable();
         errorLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        closeButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        informatiePersoonKnop.setText("Informatie geselecteerde persoon");
-        informatiePersoonKnop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                informatiePersoonKnopActionPerformed(evt);
-            }
-        });
-
-        persoonTabel.setModel(new javax.swing.table.DefaultTableModel(
+        historieTabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -56,14 +56,14 @@ public class InterfaceWebhistorie extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane1.setViewportView(persoonTabel);
+        jScrollPane1.setViewportView(historieTabel);
 
         errorLabel.setText(" ");
 
-        jButton1.setText("Webhistorie");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        closeButton.setText("Close window");
+        closeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                closeButtonActionPerformed(evt);
             }
         });
 
@@ -75,13 +75,10 @@ public class InterfaceWebhistorie extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 465, Short.MAX_VALUE)
+                        .addGap(0, 870, Short.MAX_VALUE)
                         .addComponent(errorLabel)
-                        .addGap(45, 45, 45)
-                        .addComponent(jButton1)
-                        .addGap(115, 115, 115)
-                        .addComponent(informatiePersoonKnop, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(closeButton))
                     .addComponent(jScrollPane1))
                 .addContainerGap())
         );
@@ -89,39 +86,24 @@ public class InterfaceWebhistorie extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(errorLabel)
-                    .addComponent(jButton1)
-                    .addComponent(informatiePersoonKnop))
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(errorLabel)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(closeButton)
+                        .addContainerGap(12, Short.MAX_VALUE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void informatiePersoonKnopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informatiePersoonKnopActionPerformed
-        if (persoonTabel.getSelectedRow() == -1) {
-            errorLabel.setForeground(Color.red);
-            errorLabel.setText("Selecteer een persoon.");
-        } else {
-
-            // Eventuele foutmelding weghalen, aangezien er naar een ander gedeelte in het programma gegaan wordt.
-            errorLabel.setText("");
-
-            // Geselecteerde persoon opvragen.
-            int persoonID = (int) persoonTabel.getValueAt(persoonTabel.getSelectedRow(), 0);
-            Medewerker selected = database.getMedewerker(persoonID);
-
-            // Aanmaken van een nieuw venster.
-            InterfacePersoonGegevens interfacePersoonGegevens = new InterfacePersoonGegevens(database, selected);
-        }
-    }//GEN-LAST:event_informatiePersoonKnopActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void closeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeButtonActionPerformed
+    this.dispose();
+    }//GEN-LAST:event_closeButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,16 +135,44 @@ public class InterfaceWebhistorie extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InterfaceWebhistorie().setVisible(true);
+                
             }
         });
     }
+    
+        private void refreshTable() {
+            setHistorieTabel(database.refreshHistorieQuery(orderBy));
+       
+    }
+    
+    public void setHistorieTabel(DefaultListModel<Webhistorie> historieLijst) {
+        DefaultTableModel tabel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                //all cells false
+                return false;
+            }
+        };
 
+        String[] column = {"Klant id", "titel", "jaar", "maand", "bezoek", "post", "koop", "retour", "koop", "retour"};
+        tabel.setColumnIdentifiers(column);
+
+        for (int i = 0; i < historieLijst.getSize(); i++) {
+            Webhistorie w = (Webhistorie) historieLijst.getElementAt(i);
+            Object[] row = {w.getKlant_id(), w.getTitel_cd(), w.getJaar(), w.getMaand(), w.getN_bezoek(), w.getN_post(), w.getN_koop(), w.getN_retour(), w.getB_koop(), w.getB_retour()};
+            tabel.addRow(row);
+        }
+
+        historieTabel.setModel(tabel);
+    }
+
+    public void addDatabase(Database database) {
+        this.database = database;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton closeButton;
     private javax.swing.JLabel errorLabel;
-    private javax.swing.JButton informatiePersoonKnop;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTable historieTabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable persoonTabel;
     // End of variables declaration//GEN-END:variables
 }

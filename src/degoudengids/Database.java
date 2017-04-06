@@ -93,7 +93,16 @@ public class Database {
             return refreshMedewerkers(persoonQuery);
 	}
         
-
+        /**
+	 * @return Returnt een lijst met webhistorie uit de database kloppend aan het opgegeven filter
+	 */
+	public DefaultListModel<Webhistorie> refreshFilterHistorieQuery(String klant_id) {
+		String historieQuery = "select * from webhistorie" + 
+                                      " WHERE klant_id LIKE '%" + klant_id + "%' ORDER BY klant_id " +
+                                      "LIMIT " + limiet +";";
+                return refreshHistorie(historieQuery);
+	}
+        
 	/**
 	 * @return lijst met medewerkers, naar de hand van de query uit een methode hierboven
 	 */

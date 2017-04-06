@@ -7,6 +7,7 @@ package degoudengids;
 
 import java.awt.Color;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -60,7 +61,7 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         informatiePersoonKnop = new javax.swing.JButton();
         errorLabel = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        historieButton = new javax.swing.JButton();
 
         jLabel3.setText("jLabel3");
 
@@ -126,10 +127,10 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
 
         errorLabel.setText(" ");
 
-        jButton1.setText("Webhistorie");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        historieButton.setText("Webhistorie");
+        historieButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                historieButtonActionPerformed(evt);
             }
         });
 
@@ -166,7 +167,7 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
                         .addGap(288, 288, 288)
                         .addComponent(errorLabel)
                         .addGap(45, 45, 45)
-                        .addComponent(jButton1)
+                        .addComponent(historieButton)
                         .addGap(115, 115, 115)
                         .addComponent(informatiePersoonKnop, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
@@ -190,7 +191,7 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(errorLabel)
-                    .addComponent(jButton1)
+                    .addComponent(historieButton)
                     .addComponent(informatiePersoonKnop))
                 .addContainerGap())
         );
@@ -255,9 +256,12 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_informatiePersoonKnopActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void historieButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historieButtonActionPerformed
+        Database database = new Database();
+        JFrame historie = new InterfaceWebhistorie(database);
+        historie.setVisible(true);
+        historie.setTitle("NTU klant-webhistorie");
+    }//GEN-LAST:event_historieButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,8 +339,8 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
     private javax.swing.JLabel errorLabel;
     private javax.swing.JLabel filterLabel;
     private javax.swing.JTextField filterVak;
+    private javax.swing.JButton historieButton;
     private javax.swing.JButton informatiePersoonKnop;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
