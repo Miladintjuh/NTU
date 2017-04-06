@@ -111,6 +111,7 @@ public class InterfacePersoonGegevens extends javax.swing.JFrame {
             }
         });
 
+        cursusVak.setEditable(false);
         cursusVak.setMinimumSize(new java.awt.Dimension(200, 28));
         cursusVak.setPreferredSize(new java.awt.Dimension(200, 28));
 

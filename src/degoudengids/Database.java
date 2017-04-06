@@ -16,6 +16,7 @@ public class Database {
 	private Connection connection;
 	private Statement statement;
         private Medewerker medewerker;
+        private int limiet = 500;
 	/**
 	 * Hier wordt de database met het programma geconnect.
 	 */
@@ -31,36 +32,56 @@ public class Database {
 	}
 
 	/**
-	 * @return Returnt een lijst met alle personen uit de database
+	 * @return Returnt een lijst met alle medewerkers uit de database
 	 */
 	public DefaultListModel<Medewerker> refreshPersoonQuery() {
-		String persoonQuery = "SELECT * FROM medewerker ORDER BY medew_nr;";
+		String persoonQuery = "select m.*, c.cnaam " +
+                                        "from functie f " +
+                                        "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
+                                        "JOIN medewerker m ON m.functie_nr = f.functie_nr " +
+                                        "ORDER BY medew_nr " +
+                                        "LIMIT " + limiet +";";
 		return refreshPersonen(persoonQuery);
 	}
 
         public DefaultListModel<Medewerker> refreshPersoonQuery(String orderBy) {
-		String persoonQuery = "SELECT * FROM medewerker " + orderBy + ";";
+		String persoonQuery = "select m.*, c.cnaam " +
+                                        "from functie f " +
+                                        "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
+                                        "JOIN medewerker m ON m.functie_nr = f.functie_nr "
+                                        + orderBy + 
+                                        " LIMIT " + limiet +";";
 		return refreshPersonen(persoonQuery);
 	}
 
 
 	/**
-	 * @return Returnt een lijst met  personen uit de database kloppend aan het opgegeven filter
+	 * @return Returnt een lijst met medewerkers uit de database kloppend aan het opgegeven filter
 	 */
 	public DefaultListModel<Medewerker> refreshFilterPersoonQuery(String voornaam) {
-		String persoonQuery = "SELECT * FROM medewerker WHERE naam LIKE '%" + voornaam + "%' ORDER BY medew_nr;";
+		String persoonQuery = "select m.*, c.cnaam " +
+                                        "from functie f " +
+                                        "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
+                                        "JOIN medewerker m ON m.functie_nr = f.functie_nr " +
+                                        "WHERE m.naam LIKE '%" + voornaam + "%' ORDER BY medew_nr " +
+                                        "LIMIT " + limiet +";";
 		return refreshPersonen(persoonQuery);
 	}
 
         public DefaultListModel<Medewerker> refreshFilterPersoonQuery(String voornaam, String orderBy) {
-		String persoonQuery = "SELECT * FROM medewerker WHERE naam LIKE '%" + voornaam + "%' " + orderBy + ";";
+		String persoonQuery = "select m.*, c.cnaam " +
+                                        "from functie f " +
+                                        "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
+                                        "JOIN medewerker m ON m.functie_nr = f.functie_nr " + 
+                                        "WHERE m.naam LIKE '%" + voornaam + "%' " + orderBy +
+                                        " LIMIT " + limiet +";";
 		return refreshPersonen(persoonQuery);
 	}
 
 
 
 	/**
-	 * @return lijst met personen, naar de hand van de query uit een methode hierboven
+	 * @return lijst met medewerkers, naar de hand van de query uit een methode hierboven
 	 */
 	private DefaultListModel<Medewerker> refreshPersonen(String query) {
 		DefaultListModel<Medewerker> medewerkers = new DefaultListModel();
@@ -96,7 +117,11 @@ public class Database {
                                 "JOIN medewerker m ON m.functie_nr = f.functie_nr " +
                                 "where m.medew_nr =" + medew_nr + ";";
                 ResultSet result = statement.executeQuery(query);
-                while(result.next()) {
+                
+                for (int i = 0; i < limiet; i++) {
+                    
+                
+              //  while(result.next()) {
                     Medewerker m = new Medewerker();
 
                     m.setMedew_nr(result.getInt("medew_nr"));
@@ -117,34 +142,11 @@ public class Database {
         }
 
         /**
-         * Nieuwe persoon toevoegen aan de database
-         */
-	public void toevoegenPersoon(String voornaam, String achternaam, String email, String telefoon) {
-		try {
-			String statement = "INSERT INTO persoon (voornaam, achternaam, email, telefoon ) VALUES (?,?,?,?)";
-			PreparedStatement pstat = connection.prepareStatement(statement);
-			pstat.setString	(1, voornaam);
-			pstat.setString	(2, achternaam);
-			pstat.setString	(3, email);
-			pstat.setString	(4, telefoon);
-
-			pstat.executeUpdate();
-			pstat.close();
-		}
-		catch (SQLException ex) {
-			Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
-
-
-
-
-        /**
          * Aangepaste gegevens van een persoon doorsturen naar de database
         */
 	public void aanpassenPersoonGegevens(Medewerker persoon) {
 	    try {
-		String statement = "UPDATE persoon SET voornaam = ?, achternaam = ?, email = ?, telefoon = ? WHERE medew_nr = " + persoon.getMedew_nr()+ ";";
+		String statement = "UPDATE medewerker SET naam = ?, achternaam = ?, email = ?, woonplaats = ? WHERE medew_nr = " + persoon.getMedew_nr()+ ";";
 		PreparedStatement pstat = connection.prepareStatement(statement);
 
 			pstat.setString	(1, persoon.getNaam());
