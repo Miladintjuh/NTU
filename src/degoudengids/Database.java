@@ -35,7 +35,7 @@ public class Database {
 	 * @return Returnt een lijst met alle personen uit de database
 	 */
 	public DefaultListModel<Medewerker> refreshMedewerkerQuery() {
-		String persoonQuery = "select m.*, c.cnaam " +
+		String persoonQuery = "select m.*, c.naam as cnaam " +
                                         "from functie f " +
                                         "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
                                         "JOIN medewerker m ON m.functie_nr = f.functie_nr " +
@@ -45,7 +45,7 @@ public class Database {
 	}
 
         public DefaultListModel<Medewerker> refreshMedewerkerQuery(String orderBy) {
-				String persoonQuery = "select m.*, c.cnaam " +
+				String persoonQuery = "select m.*, c.naam as cnaam " +
                                         "from functie f " +
                                         "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
                                         "JOIN medewerker m ON m.functie_nr = f.functie_nr "
@@ -74,7 +74,7 @@ public class Database {
 	 * @return Returnt een lijst met  personen uit de database kloppend aan het opgegeven filter
 	 */
 	public DefaultListModel<Medewerker> refreshFilterMedewerkerQuery(String voornaam) {
-		String persoonQuery = "select m.*, c.cnaam " +
+		String persoonQuery = "select m.*, c.naam as cnaam " +
                                         "from functie f " +
                                         "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
                                         "JOIN medewerker m ON m.functie_nr = f.functie_nr " +
@@ -84,7 +84,7 @@ public class Database {
 	}
 
         public DefaultListModel<Medewerker> refreshFilterMedewerkerQuery(String voornaam, String orderBy) {
-		String persoonQuery = "select m.*, c.cnaam " +
+		String persoonQuery = "select m.*, c.naam as cnaam " +
                                         "from functie f " +
                                         "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
                                         "JOIN medewerker m ON m.functie_nr = f.functie_nr " + 
@@ -134,7 +134,7 @@ public class Database {
     }
         public Medewerker getMedewerker(int medew_nr) {
             try {
-                String query = "select m.*, c.cnaam " +
+                String query = "select m.*, c.naam as cnaam " +
                                 "from functie f " +
                                 "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
                                 "JOIN medewerker m ON m.functie_nr = f.functie_nr " +
