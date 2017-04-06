@@ -35,7 +35,7 @@ public class Gids extends javax.swing.JFrame {
         initComponents();
         this.database = database;
         setVisible(true);
-        setPersoonTabel(database.refreshFilterPersoonQuery(orderBy));
+        setPersoonTabel(database.refreshFilterMedewerkerQuery(orderBy));
         refreshTable();
     }
 
@@ -51,7 +51,6 @@ public class Gids extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         persoonTabel = new javax.swing.JTable();
-        nieuwePersoonKnop = new javax.swing.JButton();
         voornaamSort = new javax.swing.JButton();
         achternaamSort = new javax.swing.JButton();
         phoneSort = new javax.swing.JButton();
@@ -79,13 +78,6 @@ public class Gids extends javax.swing.JFrame {
             }
         ));
         jScrollPane1.setViewportView(persoonTabel);
-
-        nieuwePersoonKnop.setText("Persoon toevoegen");
-        nieuwePersoonKnop.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nieuwePersoonKnopActionPerformed(evt);
-            }
-        });
 
         voornaamSort.setText("Voornaam");
         voornaamSort.addActionListener(new java.awt.event.ActionListener() {
@@ -160,26 +152,25 @@ public class Gids extends javax.swing.JFrame {
                         .addComponent(phoneSort)
                         .addGap(82, 82, 82))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(filterLabel)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jButton1)
+                                .addGap(51, 51, 51)
+                                .addComponent(informatiePersoonKnop, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(filterLabel)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(54, 54, 54)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(44, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(646, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(filterVak)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(288, 288, 288)
                         .addComponent(errorLabel)
-                        .addGap(45, 45, 45)
-                        .addComponent(jButton1)
-                        .addGap(60, 60, 60)
-                        .addComponent(informatiePersoonKnop, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
-                        .addComponent(nieuwePersoonKnop)
-                        .addGap(55, 55, 55))))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,22 +189,15 @@ public class Gids extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(nieuwePersoonKnop)
-                        .addComponent(informatiePersoonKnop))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(errorLabel)
-                        .addComponent(jButton1)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(errorLabel)
+                    .addComponent(informatiePersoonKnop)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void nieuwePersoonKnopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nieuwePersoonKnopActionPerformed
-        InterfacePersoonCreatie interfacePersoonCreatie = new InterfacePersoonCreatie(database);
-    }//GEN-LAST:event_nieuwePersoonKnopActionPerformed
 
     private void filterVakKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_filterVakKeyReleased
         refreshTable();
@@ -315,13 +299,13 @@ public class Gids extends javax.swing.JFrame {
     private void refreshTable() {
         String filter = filterVak.getText();
         if ("".equals(filter) || "Filter".equals(filter)) {
-            setPersoonTabel(database.refreshPersoonQuery(orderBy));
+            setPersoonTabel(database.refreshMedewerkerQuery(orderBy));
         } else {
-            setPersoonTabel(database.refreshFilterPersoonQuery(filter, orderBy));
+            setPersoonTabel(database.refreshFilterMedewerkerQuery(filter, orderBy));
         }
     }
 
-    public void setPersoonTabel(DefaultListModel<Medewerker> persoonLijst) {
+    public void setPersoonTabel(DefaultListModel<Medewerker> medewLijst) {
         DefaultTableModel tabel = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -333,8 +317,8 @@ public class Gids extends javax.swing.JFrame {
         String[] column = {"medew_nr", "Voornaam", " Achternaam", "Email adres", "Woonplaats"};
         tabel.setColumnIdentifiers(column);
 
-        for (int i = 0; i < persoonLijst.getSize(); i++) {
-            Medewerker persoon = (Medewerker) persoonLijst.getElementAt(i);
+        for (int i = 0; i < medewLijst.getSize(); i++) {
+            Medewerker persoon = (Medewerker) medewLijst.getElementAt(i);
             Object[] row = {persoon.getMedew_nr(), persoon.getNaam(), persoon.getAchterNaam(), persoon.getEmail(), persoon.getWoonplaats()};
             tabel.addRow(row);
         }
@@ -356,7 +340,6 @@ public class Gids extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton nieuwePersoonKnop;
     private javax.swing.JTable persoonTabel;
     private javax.swing.JButton phoneSort;
     private javax.swing.JButton voornaamSort;

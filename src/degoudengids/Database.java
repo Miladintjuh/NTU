@@ -54,6 +54,21 @@ public class Database {
 		return refreshMedewerkers(persoonQuery);
 	}
 
+	/**
+	 * @return Returnt een lijst met alle webhistorie uit de database
+	 */
+	public DefaultListModel<Webhistorie> refreshHistorieQuery() {
+		String historieQuery = "select * from webhistorie " + 
+                                        "LIMIT " + limiet +";";
+		return refreshHistorie(historieQuery);
+	}
+
+        public DefaultListModel<Webhistorie> refreshHistorieQuery(String orderBy) {
+				String historieQuery = "select * from webhistorie "
+                                        + orderBy + 
+                                        " LIMIT " + limiet +";";
+		return refreshHistorie(historieQuery);
+	}        
 
 	/**
 	 * @return Returnt een lijst met  personen uit de database kloppend aan het opgegeven filter
@@ -77,11 +92,10 @@ public class Database {
                                         " LIMIT " + limiet +";";
             return refreshMedewerkers(persoonQuery);
 	}
-
-
+        
 
 	/**
-	 * @return lijst met personen, naar de hand van de query uit een methode hierboven
+	 * @return lijst met medewerkers, naar de hand van de query uit een methode hierboven
 	 */
 	private DefaultListModel<Medewerker> refreshMedewerkers(String query) {
 		DefaultListModel<Medewerker> medewerkers = new DefaultListModel();
@@ -137,6 +151,66 @@ public class Database {
             return null;
         }
 
+	/**
+	 * @return lijst met webhistorie, naar de hand van de query uit een methode hierboven
+	 */
+	private DefaultListModel<Webhistorie> refreshHistorie(String query) {
+		DefaultListModel<Webhistorie> webhistorie = new DefaultListModel();
+
+		try {
+			ResultSet result = statement.executeQuery(query);
+
+			while (result.next()) {
+                                Webhistorie w = new Webhistorie();
+                                w.setTitel_cd(result.getString("titel_cd"));
+                                w.setKlant_id(result.getString("klant_id"));
+                                w.setJaar(result.getString("jaar"));
+                                w.setMaand(result.getString("maand"));
+                                w.setN_bezoek(result.getString("n_bezoek"));
+                                w.setN_post(result.getString("n_post"));
+                                w.setN_koop(result.getString("n_koop"));
+                                w.setN_retour(result.getString("n_retour"));
+                                w.setB_koop(result.getString("b_koop"));
+                                w.setB_retour(result.getString("b_retour"));
+                                w.setTitel_cd(result.getString("titel_cd"));
+                                webhistorie.addElement(w);
+                                
+			}
+			result.close();
+		}
+		catch (SQLException ex) {
+			Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return webhistorie;
+
+    }
+        public Webhistorie getHistorie(int klant_id) {
+            try {
+                String query = "select * from webhistorie" + 
+                                "where klant_id =" + klant_id + ";";
+                ResultSet result = statement.executeQuery(query);
+                while(result.next()) {
+                                Webhistorie w = new Webhistorie();
+                                w.setTitel_cd(result.getString("titel_cd"));
+                                w.setKlant_id(result.getString("klant_id"));
+                                w.setJaar(result.getString("jaar"));
+                                w.setMaand(result.getString("maand"));
+                                w.setN_bezoek(result.getString("n_bezoek"));
+                                w.setN_post(result.getString("n_post"));
+                                w.setN_koop(result.getString("n_koop"));
+                                w.setN_retour(result.getString("n_retour"));
+                                w.setB_koop(result.getString("b_koop"));
+                                w.setB_retour(result.getString("b_retour"));
+                                w.setTitel_cd(result.getString("titel_cd"));
+                    return w;
+                }
+            }
+            catch(SQLException e) {
+                System.out.println(e);
+            }
+            return null;
+        }        
+        
         /**
          * Aangepaste gegevens van een medewerker doorsturen naar de database
         */

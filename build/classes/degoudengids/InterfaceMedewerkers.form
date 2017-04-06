@@ -53,12 +53,12 @@
                               <Component id="jScrollPane1" min="-2" pref="813" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                      <EmptySpace pref="77" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="113" max="32767" attributes="0"/>
+              <EmptySpace pref="167" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="filterVak" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
@@ -82,7 +82,7 @@
                   <Component id="filterVak" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="filterLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="achternaamSort" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="phoneSort" alignment="3" min="-2" max="-2" attributes="0"/>

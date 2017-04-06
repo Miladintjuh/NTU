@@ -5,6 +5,9 @@
  */
 package degoudengids;
 
+import java.awt.Color;
+import javax.swing.DefaultListModel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Barney
@@ -27,31 +30,98 @@ public class InterfaceWebhistorie extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        informatiePersoonKnop = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        persoonTabel = new javax.swing.JTable();
+        errorLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Medewerker ID");
+        informatiePersoonKnop.setText("Informatie geselecteerde persoon");
+        informatiePersoonKnop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                informatiePersoonKnopActionPerformed(evt);
+            }
+        });
+
+        persoonTabel.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(persoonTabel);
+
+        errorLabel.setText(" ");
+
+        jButton1.setText("Webhistorie");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 465, Short.MAX_VALUE)
+                        .addComponent(errorLabel)
+                        .addGap(45, 45, 45)
+                        .addComponent(jButton1)
+                        .addGap(115, 115, 115)
+                        .addComponent(informatiePersoonKnop, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 1, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel1)
-                .addContainerGap(244, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(errorLabel)
+                    .addComponent(jButton1)
+                    .addComponent(informatiePersoonKnop))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void informatiePersoonKnopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informatiePersoonKnopActionPerformed
+        if (persoonTabel.getSelectedRow() == -1) {
+            errorLabel.setForeground(Color.red);
+            errorLabel.setText("Selecteer een persoon.");
+        } else {
+
+            // Eventuele foutmelding weghalen, aangezien er naar een ander gedeelte in het programma gegaan wordt.
+            errorLabel.setText("");
+
+            // Geselecteerde persoon opvragen.
+            int persoonID = (int) persoonTabel.getValueAt(persoonTabel.getSelectedRow(), 0);
+            Medewerker selected = database.getMedewerker(persoonID);
+
+            // Aanmaken van een nieuw venster.
+            InterfacePersoonGegevens interfacePersoonGegevens = new InterfacePersoonGegevens(database, selected);
+        }
+    }//GEN-LAST:event_informatiePersoonKnopActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -89,6 +159,10 @@ public class InterfaceWebhistorie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel errorLabel;
+    private javax.swing.JButton informatiePersoonKnop;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable persoonTabel;
     // End of variables declaration//GEN-END:variables
 }
