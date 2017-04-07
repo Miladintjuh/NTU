@@ -35,22 +35,20 @@ public class Database {
 	 * @return Returnt een lijst met alle personen uit de database
 	 */
 	public DefaultListModel<Medewerker> refreshMedewerkerQuery() {
-		String persoonQuery = "select m.*, c.naam as cnaam " +
+		String persoonQuery = "select top(" + limiet + ") m.*, c.naam as cnaam " +
                                         "from functie f " +
                                         "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
                                         "JOIN medewerker m ON m.functie_nr = f.functie_nr " +
-                                        "ORDER BY medew_nr " +
-                                        "LIMIT " + limiet +";";
+                                        "ORDER BY medew_nr;";
 		return refreshMedewerkers(persoonQuery);
 	}
 
         public DefaultListModel<Medewerker> refreshMedewerkerQuery(String orderBy) {
-				String persoonQuery = "select m.*, c.naam as cnaam " +
+				String persoonQuery = "select top(" + limiet + ") m.*, c.naam as cnaam " +
                                         "from functie f " +
                                         "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
                                         "JOIN medewerker m ON m.functie_nr = f.functie_nr "
-                                        + orderBy + 
-                                        " LIMIT " + limiet +";";
+                                        + orderBy + ";";
 		return refreshMedewerkers(persoonQuery);
 	}
 
@@ -58,15 +56,13 @@ public class Database {
 	 * @return Returnt een lijst met alle webhistorie uit de database
 	 */
 	public DefaultListModel<Webhistorie> refreshHistorieQuery() {
-		String historieQuery = "select * from webhistorie " + 
-                                        "LIMIT " + limiet +";";
+		String historieQuery = "select top(" + limiet + ") * from webhistorie ;";
 		return refreshHistorie(historieQuery);
 	}
 
         public DefaultListModel<Webhistorie> refreshHistorieQuery(String orderBy) {
-				String historieQuery = "select * from webhistorie "
-                                        + orderBy + 
-                                        " LIMIT " + limiet +";";
+				String historieQuery = "select top(" + limiet + ") * from webhistorie "
+                                        + orderBy + ";";
 		return refreshHistorie(historieQuery);
 	}        
 
@@ -74,12 +70,11 @@ public class Database {
 	 * @return Returnt een lijst met  personen uit de database kloppend aan het opgegeven filter
 	 */
 	public DefaultListModel<Medewerker> refreshFilterMedewerkerQuery(String voornaam) {
-		String persoonQuery = "select m.*, c.naam as cnaam " +
+		String persoonQuery = "select top(" + limiet + ") m.*, c.naam as cnaam " +
                                         "from functie f " +
                                         "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
                                         "JOIN medewerker m ON m.functie_nr = f.functie_nr " +
-                                        "WHERE m.naam LIKE '%" + voornaam + "%' ORDER BY medew_nr " +
-                                        "LIMIT " + limiet +";";
+                                        "WHERE m.naam LIKE '%" + voornaam + "%' ORDER BY medew_nr ;";
                 return refreshMedewerkers(persoonQuery);
 	}
 
@@ -88,8 +83,7 @@ public class Database {
                                         "from functie f " +
                                         "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
                                         "JOIN medewerker m ON m.functie_nr = f.functie_nr " + 
-                                        "WHERE m.naam LIKE '%" + voornaam + "%' " + orderBy +
-                                        " LIMIT " + limiet +";";
+                                        "WHERE m.naam LIKE '%" + voornaam + "%' " + orderBy +";";
             return refreshMedewerkers(persoonQuery);
 	}
         
@@ -98,8 +92,7 @@ public class Database {
 	 */
 	public DefaultListModel<Webhistorie> refreshFilterHistorieQuery(String klant_id) {
 		String historieQuery = "select * from webhistorie" + 
-                                      " WHERE klant_id LIKE '%" + klant_id + "%' ORDER BY klant_id " +
-                                      "LIMIT " + limiet +";";
+                                      " WHERE klant_id LIKE '%" + klant_id + "%' ORDER BY klant_id;";
                 return refreshHistorie(historieQuery);
 	}
         
@@ -134,7 +127,7 @@ public class Database {
     }
         public Medewerker getMedewerker(int medew_nr) {
             try {
-                String query = "select m.*, c.naam as cnaam " +
+                String query = "select top(" + limiet + ") m.*, c.naam as cnaam " +
                                 "from functie f " +
                                 "JOIN cursus AS c ON c.functie_nr = f.functie_nr " +
                                 "JOIN medewerker m ON m.functie_nr = f.functie_nr " +
@@ -195,7 +188,7 @@ public class Database {
     }
         public Webhistorie getHistorie(int klant_id) {
             try {
-                String query = "select * from webhistorie" + 
+                String query = "select top(" + limiet + ")  * from webhistorie" +
                                 "where klant_id =" + klant_id + ";";
                 ResultSet result = statement.executeQuery(query);
                 while(result.next()) {

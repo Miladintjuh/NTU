@@ -12,7 +12,6 @@ import javax.swing.JFrame;
  * @author Rebano
  */
 public class NTU_main {
-
     /**
      * @param args the command line arguments
      */

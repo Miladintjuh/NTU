@@ -26,7 +26,7 @@ public class Datasource	{
 	* Fill variables for the URL, database, username, and password
 	*/
 	private static void init() {
-		String driver = "com.mysql.jdbc.Driver";
+		String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 
 		try {
 			Class.forName(driver);
@@ -54,8 +54,8 @@ public class Datasource	{
 	}
 
 	private static Connection createConnection() {
-			String connectionString = "jdbc:mysql://" + dbserver + "/" + database + "?" +
-					"user=" + username + "&password=" + password;
+			String connectionString = "jdbc:sqlserver://" + dbserver + "\\" + database + ";" +
+					"user=" + username + ";password=" + password + ";";
 
 		try {
 			return DriverManager.getConnection(connectionString);
