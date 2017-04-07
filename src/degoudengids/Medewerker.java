@@ -1,13 +1,13 @@
 package degoudengids;
 
 public class Medewerker {
-        private int medew_nr;
-	private String naam;
-	private String achterNaam;
-	private String woonplaats;
-	private String email;
-        private String functie_nr;
-        private String cnaam;
+    private int medw_nr;
+    private String naam;
+    private String achterNaam;
+    private String datum_in_dienst;
+    private String email;
+    private String functie;
+    private String cnaam;
 
     public String getCursus_naam() {
         return cnaam;
@@ -16,21 +16,21 @@ public class Medewerker {
     public void setCursus_naam(String cursus_naam) {
         this.cnaam = cursus_naam;
     }
-        
-    public int getMedew_nr() {
-        return medew_nr;
+
+    public int getMedw_nr() {
+        return medw_nr;
     }
 
-    public String getFunctie_nr() {
-        return functie_nr;
+    public void setMedw_nr(int medw_nr) {
+        this.medw_nr = medw_nr;
     }
 
-    public void setFunctie_nr(String functie_nr) {
-        this.functie_nr = functie_nr;
+    public String getFunctie() {
+        return functie;
     }
 
-    public void setMedew_nr(int medew_nr) {
-        this.medew_nr = medew_nr;
+    public void setFunctie(String functie) {
+        this.functie = functie;
     }
 
     public String getNaam() {
@@ -49,12 +49,12 @@ public class Medewerker {
         this.achterNaam = achterNaam;
     }
 
-    public String getWoonplaats() {
-        return woonplaats;
+    public String getDatum_in_dienst() {
+        return datum_in_dienst;
     }
 
-    public void setWoonplaats(String woonplaats) {
-        this.woonplaats = woonplaats;
+    public void setDatum_in_dienst(String datum_in_dienst) {
+        this.datum_in_dienst = datum_in_dienst;
     }
 
     public String getEmail() {
@@ -64,7 +64,6 @@ public class Medewerker {
     public void setEmail(String email) {
         this.email = email;
     }
-	
 
 
 }

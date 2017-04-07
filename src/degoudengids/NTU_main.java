@@ -5,10 +5,9 @@
  */
 package degoudengids;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 /**
- *
  * @author Rebano
  */
 public class NTU_main {
@@ -21,5 +20,6 @@ public class NTU_main {
         NTU.setVisible(true);
         NTU.setTitle("NTU Database");
     }
-    
+
 }
+

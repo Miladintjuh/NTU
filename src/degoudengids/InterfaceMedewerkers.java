@@ -5,13 +5,11 @@
  */
 package degoudengids;
 
-import java.awt.Color;
-import javax.swing.DefaultListModel;
-import javax.swing.JFrame;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 
 /**
- *
  * @author Rebano
  */
 public class InterfaceMedewerkers extends javax.swing.JFrame {
@@ -28,6 +26,21 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
     String orderByEmailDesc = " ORDER BY email DESC ";
     String orderBy = "ORDER BY medew_nr ASC";
     String orderByMedew_nrDesc = "ORDER BY medew_nr DESC";
+    
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton achternaamSort;
+    private javax.swing.JButton emailSort;
+    private javax.swing.JLabel errorLabel;
+    private javax.swing.JLabel filterLabel;
+    private javax.swing.JTextField filterVak;
+    private javax.swing.JButton historieButton;
+    private javax.swing.JButton informatiePersoonKnop;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable persoonTabel;
+    private javax.swing.JButton phoneSort;
+    private javax.swing.JButton voornaamSort;
 
     /**
      * Creates new form Gids
@@ -38,6 +51,43 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
         setVisible(true);
         setPersoonTabel(database.refreshFilterMedewerkerQuery(orderBy));
         refreshTable();
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(InterfaceMedewerkers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(InterfaceMedewerkers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(InterfaceMedewerkers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(InterfaceMedewerkers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+
+            }
+        });
+
     }
 
     /**
@@ -68,15 +118,15 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         persoonTabel.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
+                new Object[][]{
+                        {},
+                        {},
+                        {},
+                        {}
+                },
+                new String[]{
 
-            }
+                }
         ));
         jScrollPane1.setViewportView(persoonTabel);
 
@@ -137,63 +187,63 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(voornaamSort)
-                        .addGap(72, 72, 72)
-                        .addComponent(achternaamSort)
-                        .addGap(52, 52, 52)
-                        .addComponent(emailSort)
-                        .addGap(53, 53, 53)
-                        .addComponent(phoneSort)
-                        .addGap(82, 82, 82))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(filterLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(77, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(167, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(filterVak)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(errorLabel)
-                        .addGap(45, 45, 45)
-                        .addComponent(historieButton)
-                        .addGap(115, 115, 115)
-                        .addComponent(informatiePersoonKnop, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(voornaamSort)
+                                                .addGap(72, 72, 72)
+                                                .addComponent(achternaamSort)
+                                                .addGap(52, 52, 52)
+                                                .addComponent(emailSort)
+                                                .addGap(53, 53, 53)
+                                                .addComponent(phoneSort)
+                                                .addGap(82, 82, 82))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(filterLabel)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addGap(54, 54, 54)
+                                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addContainerGap(77, Short.MAX_VALUE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(167, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(filterVak)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(288, 288, 288)
+                                                .addComponent(errorLabel)
+                                                .addGap(45, 45, 45)
+                                                .addComponent(historieButton)
+                                                .addGap(115, 115, 115)
+                                                .addComponent(informatiePersoonKnop, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap())))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(filterVak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(filterLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(achternaamSort)
-                    .addComponent(phoneSort)
-                    .addComponent(emailSort)
-                    .addComponent(jLabel2)
-                    .addComponent(voornaamSort))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(errorLabel)
-                    .addComponent(historieButton)
-                    .addComponent(informatiePersoonKnop))
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(filterVak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(filterLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(achternaamSort)
+                                        .addComponent(phoneSort)
+                                        .addComponent(emailSort)
+                                        .addComponent(jLabel2)
+                                        .addComponent(voornaamSort))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(errorLabel)
+                                        .addComponent(historieButton)
+                                        .addComponent(informatiePersoonKnop))
+                                .addContainerGap())
         );
 
         pack();
@@ -209,7 +259,8 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
         } else {
             orderBy = orderByVoornaamAsc;
         }
-        refreshTable();    }//GEN-LAST:event_voornaamSortActionPerformed
+        refreshTable();
+    }//GEN-LAST:event_voornaamSortActionPerformed
 
     private void achternaamSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_achternaamSortActionPerformed
         if (orderBy.equals(orderByAchternaamAsc)) {
@@ -243,7 +294,7 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
             errorLabel.setForeground(Color.red);
             errorLabel.setText("Selecteer een persoon.");
         } else {
-            
+
             // Eventuele foutmelding weghalen, aangezien er naar een ander gedeelte in het programma gegaan wordt.
             errorLabel.setText("");
 
@@ -263,43 +314,6 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
         historie.setTitle("NTU klant-webhistorie");
     }//GEN-LAST:event_historieButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceMedewerkers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceMedewerkers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceMedewerkers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceMedewerkers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-
-            }
-        });
-
-    }
-
     private void refreshTable() {
         String filter = filterVak.getText();
         if ("".equals(filter) || "Filter".equals(filter)) {
@@ -318,12 +332,12 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
             }
         };
 
-        String[] column = {"medew_nr", "Voornaam", " Achternaam", "Email adres", "Woonplaats"};
+        String[] column = {"medew_nr", "Voornaam", " Achternaam", "Email adres", "datum in dienst"};
         tabel.setColumnIdentifiers(column);
 
         for (int i = 0; i < persoonLijst.getSize(); i++) {
             Medewerker persoon = (Medewerker) persoonLijst.getElementAt(i);
-            Object[] row = {persoon.getMedew_nr(), persoon.getNaam(), persoon.getAchterNaam(), persoon.getEmail(), persoon.getWoonplaats()};
+            Object[] row = {persoon.getMedw_nr(), persoon.getNaam(), persoon.getAchterNaam(), persoon.getEmail(), persoon.getDatum_in_dienst()};
             tabel.addRow(row);
         }
 
@@ -333,19 +347,5 @@ public class InterfaceMedewerkers extends javax.swing.JFrame {
     public void addDatabase(Database database) {
         this.database = database;
     }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton achternaamSort;
-    private javax.swing.JButton emailSort;
-    private javax.swing.JLabel errorLabel;
-    private javax.swing.JLabel filterLabel;
-    private javax.swing.JTextField filterVak;
-    private javax.swing.JButton historieButton;
-    private javax.swing.JButton informatiePersoonKnop;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable persoonTabel;
-    private javax.swing.JButton phoneSort;
-    private javax.swing.JButton voornaamSort;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }

@@ -5,12 +5,11 @@
  */
 package degoudengids;
 
-import java.awt.Color;
-import javax.swing.DefaultListModel;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 
 /**
- *
  * @author Rebano
  */
 public class Gids extends javax.swing.JFrame {
@@ -27,6 +26,20 @@ public class Gids extends javax.swing.JFrame {
     String orderByEmailDesc = " ORDER BY email DESC ";
     String orderBy = "ORDER BY medew_nr ASC";
     String orderByMedew_nrDesc = "ORDER BY medew_nr DESC";
+    // Variables declaration - do not modify                     
+    private javax.swing.JButton achternaamSort;
+    private javax.swing.JButton emailSort;
+    private javax.swing.JLabel errorLabel;
+    private javax.swing.JLabel filterLabel;
+    private javax.swing.JTextField filterVak;
+    private javax.swing.JButton informatiePersoonKnop;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable persoonTabel;
+    private javax.swing.JButton phoneSort;
+    private javax.swing.JButton voornaamSort;
 
     /**
      * Creates new form Gids
@@ -37,6 +50,42 @@ public class Gids extends javax.swing.JFrame {
         setVisible(true);
         setPersoonTabel(database.refreshFilterMedewerkerQuery(orderBy));
         refreshTable();
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Gids.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Gids.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Gids.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Gids.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+
+            }
+        });
+
     }
 
     /**
@@ -67,15 +116,15 @@ public class Gids extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         persoonTabel.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
+                new Object[][]{
+                        {},
+                        {},
+                        {},
+                        {}
+                },
+                new String[]{
 
-            }
+                }
         ));
         jScrollPane1.setViewportView(persoonTabel);
 
@@ -136,64 +185,64 @@ public class Gids extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(voornaamSort)
-                        .addGap(72, 72, 72)
-                        .addComponent(achternaamSort)
-                        .addGap(52, 52, 52)
-                        .addComponent(emailSort)
-                        .addGap(53, 53, 53)
-                        .addComponent(phoneSort)
-                        .addGap(82, 82, 82))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(51, 51, 51)
-                                .addComponent(informatiePersoonKnop, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(filterLabel)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(54, 54, 54)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(44, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(646, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(filterVak)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(288, 288, 288)
-                        .addComponent(errorLabel)
-                        .addContainerGap())))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(voornaamSort)
+                                                .addGap(72, 72, 72)
+                                                .addComponent(achternaamSort)
+                                                .addGap(52, 52, 52)
+                                                .addComponent(emailSort)
+                                                .addGap(53, 53, 53)
+                                                .addComponent(phoneSort)
+                                                .addGap(82, 82, 82))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(layout.createSequentialGroup()
+                                                                .addComponent(jButton1)
+                                                                .addGap(51, 51, 51)
+                                                                .addComponent(informatiePersoonKnop, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                .addComponent(filterLabel)
+                                                                .addGroup(layout.createSequentialGroup()
+                                                                        .addGap(54, 54, 54)
+                                                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 813, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addContainerGap(44, Short.MAX_VALUE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap(646, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(filterVak)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addGap(288, 288, 288)
+                                                .addComponent(errorLabel)
+                                                .addContainerGap())))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(filterVak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(filterLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(achternaamSort)
-                    .addComponent(phoneSort)
-                    .addComponent(emailSort)
-                    .addComponent(jLabel2)
-                    .addComponent(voornaamSort))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(errorLabel)
-                    .addComponent(informatiePersoonKnop)
-                    .addComponent(jButton1))
-                .addContainerGap())
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(filterVak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(filterLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(achternaamSort)
+                                        .addComponent(phoneSort)
+                                        .addComponent(emailSort)
+                                        .addComponent(jLabel2)
+                                        .addComponent(voornaamSort))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(errorLabel)
+                                        .addComponent(informatiePersoonKnop)
+                                        .addComponent(jButton1))
+                                .addContainerGap())
         );
 
         pack();
@@ -209,7 +258,8 @@ public class Gids extends javax.swing.JFrame {
         } else {
             orderBy = orderByVoornaamAsc;
         }
-        refreshTable();    }//GEN-LAST:event_voornaamSortActionPerformed
+        refreshTable();
+    }//GEN-LAST:event_voornaamSortActionPerformed
 
     private void achternaamSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_achternaamSortActionPerformed
         if (orderBy.equals(orderByAchternaamAsc)) {
@@ -243,7 +293,7 @@ public class Gids extends javax.swing.JFrame {
             errorLabel.setForeground(Color.red);
             errorLabel.setText("Selecteer een persoon.");
         } else {
-            
+
             // Eventuele foutmelding weghalen, aangezien er naar een ander gedeelte in het programma gegaan wordt.
             errorLabel.setText("");
 
@@ -259,42 +309,6 @@ public class Gids extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Gids.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Gids.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Gids.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Gids.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-
-            }
-        });
-
-    }
 
     private void refreshTable() {
         String filter = filterVak.getText();
@@ -319,7 +333,7 @@ public class Gids extends javax.swing.JFrame {
 
         for (int i = 0; i < medewLijst.getSize(); i++) {
             Medewerker persoon = (Medewerker) medewLijst.getElementAt(i);
-            Object[] row = {persoon.getMedew_nr(), persoon.getNaam(), persoon.getAchterNaam(), persoon.getEmail(), persoon.getWoonplaats()};
+            Object[] row = {persoon.getMedw_nr(), persoon.getNaam(), persoon.getAchterNaam(), persoon.getEmail(), persoon.getDatum_in_dienst()};
             tabel.addRow(row);
         }
 
@@ -329,19 +343,5 @@ public class Gids extends javax.swing.JFrame {
     public void addDatabase(Database database) {
         this.database = database;
     }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton achternaamSort;
-    private javax.swing.JButton emailSort;
-    private javax.swing.JLabel errorLabel;
-    private javax.swing.JLabel filterLabel;
-    private javax.swing.JTextField filterVak;
-    private javax.swing.JButton informatiePersoonKnop;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable persoonTabel;
-    private javax.swing.JButton phoneSort;
-    private javax.swing.JButton voornaamSort;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 }

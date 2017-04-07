@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `cursus`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cursus` (
   `cursus_id` int(11) NOT NULL,
-  `functie_nr` varchar(45) DEFAULT NULL,
+  `functie` varchar(45) DEFAULT NULL,
   `cnaam` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`cursus_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -50,9 +50,9 @@ DROP TABLE IF EXISTS `functie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `functie` (
-  `functie_nr` int(11) NOT NULL,
+  `functie` int(11) NOT NULL,
   `naam` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`functie_nr`)
+  PRIMARY KEY (`functie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -79,7 +79,7 @@ CREATE TABLE `medewerker` (
   `achternaam` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `woonplaats` varchar(50) DEFAULT NULL,
-  `functie_nr` varchar(1) DEFAULT NULL
+  `functie` varchar(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

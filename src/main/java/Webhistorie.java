@@ -6,7 +6,6 @@
 package degoudengids;
 
 /**
- *
  * @author Rebano
  */
 public class Webhistorie {
@@ -100,6 +99,6 @@ public class Webhistorie {
     public void setB_retour(String b_retour) {
         this.b_retour = b_retour;
     }
-            
+
 
 }
